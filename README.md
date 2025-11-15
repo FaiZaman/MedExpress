@@ -6,8 +6,17 @@ Clone the repository locally. You can run the application with the following com
 ./mvnw spring-boot:run
 ```
 
-## Trade Offs
+## Trade-Offs
 
 Considering what we want the frontend to look like: a single screen with a list of consultation questions,
 or one question on the screen at one time? The latter would require some sort of paginated API, so for simplicity
 we will return all the questions at once. This also allows the user to see previous questions and their answers.
+
+When calling the consultation endpoint to get a list of questions, the types of the answers will also be returned
+to the frontend. This is so that the frontend knows what type of input to use for each question and how to validate it.
+
+All questions are required by default. With more time, we could add some optional questions and min/max validation
+on number and date-based inputs, e.g. height, weight, and DOB.
+
+Questions currently have integer enumerated IDs. If we expand MedExpress across Genovia, it would be good to switch
+to using UUIDs instead for global uniqueness.
