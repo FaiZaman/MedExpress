@@ -20,3 +20,7 @@ on number and date-based inputs, e.g. height, weight, and DOB.
 
 Questions currently have integer enumerated IDs. If we expand MedExpress across Genovia, it would be good to switch
 to using UUIDs instead for global uniqueness.
+
+Answers when received by the backend are typed as Strings and parsed in the service class.
+The alternative is to use some interface and have classes for each answer type implement the interface,
+but this seems unnecessary for now.
