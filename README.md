@@ -1,16 +1,13 @@
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+Clone the repository locally. You can run the application with the following command in the root directory of the project:
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.5.7/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.5.7/maven-plugin/build-image.html)
+```
+./mvnw spring-boot:run
+```
 
-### Maven Parent overrides
+## Trade Offs
 
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
-
+Considering what we want the frontend to look like: a single screen with a list of consultation questions,
+or one question on the screen at one time? The latter would require some sort of paginated API, so for simplicity
+we will return all the questions at once. This also allows the user to see previous questions and their answers.

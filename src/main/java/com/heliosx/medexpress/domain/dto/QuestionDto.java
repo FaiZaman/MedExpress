@@ -1,4 +1,4 @@
-package com.heliosx.medexpress.dto;
+package com.heliosx.medexpress.domain.dto;
 
 import lombok.Builder;
 import lombok.Data;

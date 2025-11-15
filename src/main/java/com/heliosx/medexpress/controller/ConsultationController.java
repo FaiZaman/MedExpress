@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.heliosx.medexpress.dto.QuestionDto;
+import com.heliosx.medexpress.domain.dto.QuestionDto;
+import com.heliosx.medexpress.domain.model.QuestionModel;
 import com.heliosx.medexpress.service.ConsultationService;
 
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,9 @@ public class ConsultationController {
 
     @GetMapping("/v1/consultation")
     public List<QuestionDto> getConsultationQuestions() {
-        return consultationService.getConsultationQuestions();
+        return consultationService.getConsultationQuestions().stream()
+                .map(QuestionModel::toQuestionDto)
+                .toList();
     }
 
 }
