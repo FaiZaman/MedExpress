@@ -1,5 +1,7 @@
 package com.heliosx.medexpress.domain.model;
 
+import java.util.List;
+
 import com.heliosx.medexpress.domain.dto.ConsultationResultDto;
 import com.heliosx.medexpress.domain.enums.RejectionReason;
 import com.heliosx.medexpress.domain.enums.Result;
@@ -15,12 +17,12 @@ public class ConsultationResultModel {
     @NonNull
     private Result result;
 
-    private RejectionReason rejectionReason;
+    private List<RejectionReason> rejectionReasons;
 
     public ConsultationResultDto toConsultationResultDto() {
         return ConsultationResultDto.builder()
                 .result(result)
-                .rejectionReason(rejectionReason)
+                .rejectionReasons(rejectionReasons)
                 .build();
     }
 }

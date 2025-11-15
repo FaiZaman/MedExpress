@@ -4,21 +4,23 @@ import com.heliosx.medexpress.domain.dto.QuestionDto;
 import com.heliosx.medexpress.domain.enums.AnswerType;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.NonNull;
 
+@Data
 @Builder
 public class QuestionModel {
 
     @NonNull
-    private Long questionId;
+    Long questionId;
 
     @NonNull
-    private String question;
+    String question;
 
     @NonNull
-    private AnswerType answerType;
+    AnswerType answerType;
 
-    private String rejectedAnswer;
+    RejectionDetails rejectionDetails;
 
     public QuestionDto toQuestionDto() {
         return QuestionDto.builder()

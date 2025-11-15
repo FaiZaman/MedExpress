@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.heliosx.medexpress.domain.enums.AnswerType;
+import com.heliosx.medexpress.domain.enums.RejectionReason;
 import com.heliosx.medexpress.domain.model.QuestionModel;
+import com.heliosx.medexpress.domain.model.RejectionDetails;
 
 @Repository
 public class ConsultationDao {
@@ -26,13 +28,13 @@ public class ConsultationDao {
             QuestionModel.builder()
                     .questionId(3L)
                     .question("What is your email address?")
-                    .answerType(AnswerType.EMAIL)
+                    .answerType(AnswerType.STRING)
                     .build(),
 
             QuestionModel.builder()
                     .questionId(4L)
                     .question("What is your phone number?")
-                    .answerType(AnswerType.PHONE)
+                    .answerType(AnswerType.STRING)
                     .build(),
 
             QuestionModel.builder()
@@ -44,20 +46,23 @@ public class ConsultationDao {
             QuestionModel.builder()
                     .questionId(6L)
                     .question("What is your height (in centimeters)?")
-                    .answerType(AnswerType.INTEGER)
+                    .answerType(AnswerType.NUMBER)
                     .build(),
 
             QuestionModel.builder()
                     .questionId(7L)
                     .question("What is your weight (in kilograms)?")
-                    .answerType(AnswerType.INTEGER)
+                    .answerType(AnswerType.NUMBER)
                     .build(),
 
             QuestionModel.builder()
                     .questionId(8L)
                     .question("Have you ever had an adverse reaction to Benadryl?")
                     .answerType(AnswerType.BOOLEAN)
-                    .rejectedAnswer("true")
+                    .rejectionDetails(RejectionDetails.builder()
+                            .rejectedAnswer("true")
+                            .rejectionReason(RejectionReason.ADVERSE_REACTION)
+                            .build())
                     .build()
     );
 

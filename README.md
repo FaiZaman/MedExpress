@@ -6,9 +6,27 @@ Clone the repository locally. You can run the application with the following com
 ./mvnw spring-boot:run
 ```
 
+To get a list of consultation questions, call the GET `/v1/consultation` API like so:
+
+```
+curl localhost:8080/v1/consultation
+```
+
+To submit a set of answers to get a consultation result, call the POST `/v1/consultation-result` API like so:
+
 ```
 curl --header "Content-Type: application/json" --request POST --data '[ { "questionId": 1, "answer": "john"} ]' localhost:8080/v1/consultation-result
 ```
+
+The above request should return an `APPROVED` result from the consultation, as question 1 does not have any rejection criteria.
+To see an example of a `REJECTED` consultation result, call the same API like so:
+
+```
+curl --header "Content-Type: application/json" --request POST --data '[ { "questionId": 8, "answer": "true"} ]' localhost:8080/v1/consultation-result
+```
+
+Question 8 relates to adverse reactions to the medication, and this request answers the question with `true` (meaning 
+the user had an adverse reaction), so we reject the prescription for them.
 
 ## Trade-Offs
 
@@ -25,6 +43,7 @@ on number and date-based inputs, e.g. height, weight, and DOB.
 Questions currently have integer enumerated IDs. If we expand MedExpress across Genovia, it would be good to switch
 to using UUIDs instead for global uniqueness.
 
-Answers when received by the backend are typed as Strings and parsed in the service class.
+Answers when received by the backend are all typed as Strings.
 The alternative is to use some interface and have classes for each answer type implement the interface,
 but this seems unnecessary for now.
+

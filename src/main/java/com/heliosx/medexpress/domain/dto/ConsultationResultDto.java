@@ -1,5 +1,7 @@
 package com.heliosx.medexpress.domain.dto;
 
+import java.util.List;
+
 import com.heliosx.medexpress.domain.enums.RejectionReason;
 import com.heliosx.medexpress.domain.enums.Result;
 
@@ -14,5 +16,5 @@ public class ConsultationResultDto {
     @NonNull
     private Result result;
 
-    private RejectionReason rejectionReason;
+    private List<RejectionReason> rejectionReasons;
 }
