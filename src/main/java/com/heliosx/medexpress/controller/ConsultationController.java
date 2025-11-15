@@ -1,5 +1,7 @@
 package com.heliosx.medexpress.controller;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,14 +24,14 @@ public class ConsultationController {
 
     private final ConsultationService consultationService;
 
-    @GetMapping("/v1/consultation")
+    @GetMapping(value = "/v1/consultation", produces = APPLICATION_JSON_VALUE)
     public List<QuestionDto> getConsultationQuestions() {
         return consultationService.getConsultationQuestions().stream()
                 .map(QuestionModel::toQuestionDto)
                 .toList();
     }
 
-    @PostMapping("/v1/consultation-result")
+    @PostMapping(value = "/v1/consultation-result", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ConsultationResultDto getConsultationResult(@RequestBody List<AnswerDto> answerDtos) {
         List<AnswerModel> answerModels = answerDtos.stream()
                 .map(AnswerDto::toAnswerModel)

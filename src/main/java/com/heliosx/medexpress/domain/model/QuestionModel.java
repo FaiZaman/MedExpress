@@ -10,13 +10,15 @@ import lombok.NonNull;
 public class QuestionModel {
 
     @NonNull
-    private Integer questionId;
+    private Long questionId;
 
     @NonNull
     private String question;
 
     @NonNull
     private AnswerType answerType;
+
+    private String rejectedAnswer;
 
     public QuestionDto toQuestionDto() {
         return QuestionDto.builder()

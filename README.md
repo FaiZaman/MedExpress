@@ -6,6 +6,10 @@ Clone the repository locally. You can run the application with the following com
 ./mvnw spring-boot:run
 ```
 
+```
+curl --header "Content-Type: application/json" --request POST --data '[ { "questionId": 1, "answer": "john"} ]' localhost:8080/v1/consultation-result
+```
+
 ## Trade-Offs
 
 Considering what we want the frontend to look like: a single screen with a list of consultation questions,

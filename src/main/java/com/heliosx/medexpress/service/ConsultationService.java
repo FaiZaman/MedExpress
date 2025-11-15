@@ -3,6 +3,7 @@ package com.heliosx.medexpress.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+import com.heliosx.medexpress.domain.enums.Result;
 import com.heliosx.medexpress.domain.model.AnswerModel;
 import com.heliosx.medexpress.domain.model.ConsultationResultModel;
 import com.heliosx.medexpress.domain.model.QuestionModel;
@@ -22,7 +23,7 @@ public class ConsultationService {
 
     public ConsultationResultModel getConsultationResult(List<AnswerModel> answerModels) {
         return ConsultationResultModel.builder()
-                .result("Approved")
+                .result(Result.APPROVED)
                 .build();
     }
 

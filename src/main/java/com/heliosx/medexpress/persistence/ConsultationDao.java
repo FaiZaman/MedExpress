@@ -10,26 +10,58 @@ import com.heliosx.medexpress.domain.model.QuestionModel;
 @Repository
 public class ConsultationDao {
 
-    private final List<QuestionModel> questionModels = List.of(
-            buildQuestionModel(1, "What is your first name?", AnswerType.STRING),
-            buildQuestionModel(2, "What is your last name?", AnswerType.STRING),
-            buildQuestionModel(3, "What is your email address?", AnswerType.EMAIL),
-            buildQuestionModel(4, "What is your phone number?", AnswerType.PHONE),
-            buildQuestionModel(5, "What is your date of birth (DD/MM/YYYY)?", AnswerType.DATE),
-            buildQuestionModel(6, "What is your height (in centimeters)?", AnswerType.INTEGER),
-            buildQuestionModel(7, "What is your weight (in kilograms)?", AnswerType.INTEGER),
-            buildQuestionModel(8, "Have you ever had an adverse reaction to Benadryl?", AnswerType.BOOLEAN)
+    private static final List<QuestionModel> QUESTIONS = List.of(
+            QuestionModel.builder()
+                    .questionId(1L)
+                    .question("What is your first name?")
+                    .answerType(AnswerType.STRING)
+                    .build(),
+
+            QuestionModel.builder()
+                    .questionId(2L)
+                    .question("What is your last name?")
+                    .answerType(AnswerType.STRING)
+                    .build(),
+
+            QuestionModel.builder()
+                    .questionId(3L)
+                    .question("What is your email address?")
+                    .answerType(AnswerType.EMAIL)
+                    .build(),
+
+            QuestionModel.builder()
+                    .questionId(4L)
+                    .question("What is your phone number?")
+                    .answerType(AnswerType.PHONE)
+                    .build(),
+
+            QuestionModel.builder()
+                    .questionId(5L)
+                    .question("What is your date of birth (DD/MM/YYYY)?")
+                    .answerType(AnswerType.DATE)
+                    .build(),
+
+            QuestionModel.builder()
+                    .questionId(6L)
+                    .question("What is your height (in centimeters)?")
+                    .answerType(AnswerType.INTEGER)
+                    .build(),
+
+            QuestionModel.builder()
+                    .questionId(7L)
+                    .question("What is your weight (in kilograms)?")
+                    .answerType(AnswerType.INTEGER)
+                    .build(),
+
+            QuestionModel.builder()
+                    .questionId(8L)
+                    .question("Have you ever had an adverse reaction to Benadryl?")
+                    .answerType(AnswerType.BOOLEAN)
+                    .rejectedAnswer("true")
+                    .build()
     );
 
     public List<QuestionModel> getConsultationQuestions() {
-        return questionModels;
-    }
-
-    private static QuestionModel buildQuestionModel(int questionId, String question, AnswerType answerType) {
-        return QuestionModel.builder()
-                .questionId(questionId)
-                .question(question)
-                .answerType(answerType)
-                .build();
+        return QUESTIONS;
     }
 }

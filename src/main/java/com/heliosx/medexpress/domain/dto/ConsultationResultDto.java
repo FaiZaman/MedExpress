@@ -1,5 +1,8 @@
 package com.heliosx.medexpress.domain.dto;
 
+import com.heliosx.medexpress.domain.enums.RejectionReason;
+import com.heliosx.medexpress.domain.enums.Result;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
@@ -9,7 +12,7 @@ import lombok.NonNull;
 public class ConsultationResultDto {
 
     @NonNull
-    private String result;
+    private Result result;
 
-    private String reason;
+    private RejectionReason rejectionReason;
 }

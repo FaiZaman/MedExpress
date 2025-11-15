@@ -11,7 +11,7 @@ import lombok.NonNull;
 public class AnswerDto {
 
     @NonNull
-    private Integer questionId;
+    private Long questionId;
 
     @NonNull
     private String answer;
